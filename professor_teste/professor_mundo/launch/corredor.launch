@@ -34,4 +34,8 @@
 
     <!-- Inicia o gzclient manualmente após o Gazebo estar rodando -->
     <node name="gazebo_client" pkg="gazebo_ros" type="gzclient" output="screen"/>
+    
+    <!-- Inicia o teleop_twist-->
+    <include file="$(find p3dx_teleop)/launch/teleop.launch"/>
+
 </launch>
