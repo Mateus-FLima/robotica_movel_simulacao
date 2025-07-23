@@ -1,0 +1,28 @@
+digraph G {
+"base_link" -> "chassis"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 454.285 sec old)\nBuffer length: 0.000 sec\n"];
+"odom" -> "base_link"[label="Broadcaster: /gazebo\nAverage rate: 10.208 Hz\nMost recent transform: 454.248 ( 0.037 sec old)\nBuffer length: 4.800 sec\n"];
+"chassis" -> "battery0"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 454.285 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "front_camera"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 454.285 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "front_laser"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 454.285 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "sonar"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 454.285 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "top"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 454.285 sec old)\nBuffer length: 0.000 sec\n"];
+"left_hub" -> "left_wheel"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 454.285 sec old)\nBuffer length: 0.000 sec\n"];
+"right_hub" -> "right_wheel"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 454.285 sec old)\nBuffer length: 0.000 sec\n"];
+"center_wheel" -> "center_hubcap"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 454.285 sec old)\nBuffer length: 0.000 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 454.285"[ shape=plaintext ] ;
+ }->"left_hub";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 454.285"[ shape=plaintext ] ;
+ }->"right_hub";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 454.285"[ shape=plaintext ] ;
+ }->"center_wheel";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 454.285"[ shape=plaintext ] ;
+ }->"odom";
+}

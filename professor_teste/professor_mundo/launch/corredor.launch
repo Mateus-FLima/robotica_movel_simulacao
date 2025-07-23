@@ -21,11 +21,14 @@
     </include>
 
     <!-- Carrega a descrição do robô no ROS Parameter Server antes de spawná-lo -->
-    <param name="/robot_description" command="$(find xacro)/xacro --inorder $(find p3dx_description)/urdf/p3dx/pioneer3dx.xacro robot_namespace:='p3dx'"/>
+    <!--<param name="/robot_description" command="$(find xacro)/xacro inorder $(find p3dx_description)/urdf/p3dx/pioneer3dx.xacro robot_namespace:='p3dx'"/>-->
+    <!--<param name="/robot_description" command="$(find p3dx_gazebo)/xacro/p3dx/pioneer3dx.xacro robot_namespace:='p3dx'" />-->
+    <param name="/robot_description" command="$(find xacro)/xacro $(find p3dx_gazebo)/xacro/p3dx/pioneer3dx.xacro robot_namespace:='p3dx'" />
+    
 
     <!-- Spawna o robô no mundo corredor -->
 
-    <include file="$(find p3dx_gazebo)/launch/spawn_p3dx.launch">
+    <include file="$(find p3dx_gazebo)/launch/spawn.launch">
         <arg name="name" value="$(arg ns)" />
         <arg name="namespace_arg" value="$(arg ns)" />
         <arg name="x" value="$(arg x)" />
