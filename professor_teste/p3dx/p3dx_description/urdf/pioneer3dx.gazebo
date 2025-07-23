@@ -94,7 +94,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<gazebo reference="lms100">
 		<sensor type="ray" name="head_hokuyo_sensor">
 			<pose>0 0 0 0 0 0</pose>
-			<visualize>true</visualize>
+			<!-- para ativar os raios azuis do LiDAR, trocar para true-->
+			<visualize>false</visualize>
 			<update_rate>50</update_rate>
 			<ray>
 				<scan>
