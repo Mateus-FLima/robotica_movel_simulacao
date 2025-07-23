@@ -61,7 +61,7 @@ work original in ucs-ros-pkg.
   <gazebo>
     <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
       <alwaysOn>true</alwaysOn>
-      <updateRate>100</updateRate>
+      <updateRate>50</updateRate>
       <leftJoint>base_right_wheel_joint</leftJoint>
       <rightJoint>base_left_wheel_joint</rightJoint>
       <wheelSeparation>0.314</wheelSeparation>
@@ -84,7 +84,7 @@ work original in ucs-ros-pkg.
   <gazebo>
     <plugin filename="libgazebo_ros_p3d.so" name="p3d_base_controller">
       <alwaysOn>true</alwaysOn>
-      <updateRate>100.0</updateRate>
+      <updateRate>50.0</updateRate>
       <bodyName>base_link</bodyName>
       <topicName>p3dx/base_pose_ground_truth</topicName>
       <gaussianNoise>0.01</gaussianNoise>

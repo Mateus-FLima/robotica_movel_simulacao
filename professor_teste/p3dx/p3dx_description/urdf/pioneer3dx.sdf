@@ -1135,7 +1135,7 @@
     <allow_auto_disable>1</allow_auto_disable>
     <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
       <alwaysOn>true</alwaysOn>
-      <updateRate>100</updateRate>
+      <updateRate>50</updateRate>
       <leftJoint>base_right_wheel_joint</leftJoint>
       <rightJoint>base_left_wheel_joint</rightJoint>
       <wheelSeparation>0.32</wheelSeparation>
@@ -1159,7 +1159,7 @@
     </plugin>
     <plugin name='p3d_base_controller' filename='libgazebo_ros_p3d.so'>
       <alwaysOn>true</alwaysOn>
-      <updateRate>100.0</updateRate>
+      <updateRate>50.0</updateRate>
       <bodyName>base_link</bodyName>
       <topicName>p3dx/base_pose_ground_truth</topicName>
       <gaussianNoise>0.01</gaussianNoise>
