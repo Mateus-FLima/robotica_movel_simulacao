@@ -422,6 +422,65 @@
     
     
     
+    <!-- OBSTACULOS ADCIONADOS -->
+      <model name="obstaculo_esquerdo_1">
+	  <pose>3.0 -1.0 0.5 0 0 0</pose> <!-- x y z yaw pitch roll -->
+	  <static>true</static>
+	  <link name="link">
+	    <collision name="collision">
+	      <geometry>
+		<box>
+		  <size>0.6 0.6 1.0</size>
+		</box>
+	      </geometry>
+	    </collision>
+	    <visual name="visual">
+	      <geometry>
+		<box>
+		  <size>0.6 0.6 1.0</size>
+		</box>
+	      </geometry>
+	      <material>
+		<script>
+		  <uri>file://media/materials/scripts/gazebo.material</uri>
+		  <name>Gazebo/Blue</name>
+		</script>
+	      </material>
+	    </visual>
+	  </link>
+	</model>
+
+	<!-- Obstáculo direito (próximo da parede) -->
+	<model name="obstaculo_direito_1">
+	  <pose>5.0 1.0 0.5 0 0 0</pose>
+	  <static>true</static>
+	  <link name="link">
+	    <collision name="collision">
+	      <geometry>
+		<box>
+		  <size>0.8 0.8 1.0</size>
+		</box>
+	      </geometry>
+	    </collision>
+	    <visual name="visual">
+	      <geometry>
+		<box>
+		  <size>0.8 0.8 1.0</size>
+		</box>
+	      </geometry>
+	      <material>
+		<script>
+		  <uri>file://media/materials/scripts/gazebo.material</uri>
+		  <name>Gazebo/Red</name>
+		</script>
+	      </material>
+	    </visual>
+	  </link>
+	</model>
+    
+    
+    
+    
     <state world_name='default'>
       <sim_time>160 136000000</sim_time>
       <real_time>161 148694765</real_time>
@@ -464,18 +523,7 @@
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
-      </model>
-      
-      <!--<model name='unit_cylinder'>
-        <pose>3 -0 0.499991 0 -0 0</pose>
-        <scale>0.633956 0.633956 1</scale>
-        <link name='link'>
-          <pose>3 -0 0.499991 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 -9.8 0 -0 0</acceleration>
-          <wrench>0 0 -9.8 0 -0 0</wrench>
-        </link>
-      </model> -->
+      </model>  
       
       <light name='sun'>
         <pose>0 0 10 0 -0 0</pose>
