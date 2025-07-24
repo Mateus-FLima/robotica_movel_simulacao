@@ -25,7 +25,7 @@ roslaunch lidar_p3dx slam.launch
 3. Andar com o robô ao longo do corredor
 4. Salvar o mapa com o comando:
 ```bash
-cd ~/catkin_ws/src/robotica_movel/professor_teste/lidar_p3dx/maps
+cd ~/catkin_ws/src/robotica_movel_simulacao/professor_teste/lidar_p3dx/maps
 rosrun map_server map_saver -f corredor_map_obstaculo
 ```
 
