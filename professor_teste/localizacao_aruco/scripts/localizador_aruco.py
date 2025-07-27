@@ -3,7 +3,7 @@ import rospy
 import cv2
 import numpy as np
 from sensor_msgs.msg import Image
-from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import PoseWithCovarianceStamped
 from cv_bridge import CvBridge
 import tf2_ros
 import tf.transformations as tf_trans
@@ -40,7 +40,7 @@ class ArucoLocator:
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer)
 
         # Publicador para a pose (opcional, TF é geralmente melhor)
-        self.pose_publisher = rospy.Publisher('/robot_pose_aruco', PoseStamped, queue_size=10)
+        self.pose_publisher = rospy.Publisher('/robot_pose_aruco', PoseWithCovarianceStamped, queue_size=10)
 
         # Assina o tópico da imagem da câmera
         self.image_subscriber = rospy.Subscriber(
@@ -134,19 +134,21 @@ class ArucoLocator:
                 rospy.logwarn(f"Não foi possível obter transformação: {e}")
                 return
 
-        pose = PoseStamped()
+        pose = PoseWithCovarianceStamped()
         pose.header = trans.header
-        pose.pose.position = trans.transform.translation
-        pose.pose.orientation = trans.transform.rotation
+        pose.pose.pose.position = trans.transform.translation
+        pose.pose.pose.orientation = trans.transform.rotation
+        pose.pose.covariance = [0.01] * 36  # Pequena incerteza
 
-        rospy.loginfo("Pose do robô no frame 'world':")
+        rospy.loginfo("Pose do robô no frame 'map':")
         rospy.loginfo(
-            f" Posição: x={pose.pose.position.x:.2f}, y={pose.pose.position.y:.2f}, z={pose.pose.position.z:.2f}"
+            f" Posição: x={pose.pose.pose.position.x:.2f}, y={pose.pose.pose.position.y:.2f}, z={pose.pose.pose.position.z:.2f}"
         )
         rospy.loginfo(
-            f" Orientação: x={pose.pose.orientation.x:.2f}, y={pose.pose.orientation.y:.2f}, "
-            f"z={pose.pose.orientation.z:.2f}, w={pose.pose.orientation.w:.2f}"
+            f" Orientação: x={pose.pose.pose.orientation.x:.2f}, y={pose.pose.pose.orientation.y:.2f}, "
+            f"z={pose.pose.pose.orientation.z:.2f}, w={pose.pose.pose.orientation.w:.2f}"
         )
+        self.pose_publisher.publish(pose)
 
 
 if __name__ == '__main__':

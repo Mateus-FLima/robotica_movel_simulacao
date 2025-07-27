@@ -35,3 +35,12 @@ rosrun map_server map_saver -f ~/catkin_ws/src/robotica_movel/professor_teste/li
 roslaunch lidar_p3dx localization.launch
 ```
 
+### Para rodar o Filtro de Kalman
+1. Rodar o corredor.launch
+2. Rodar o localization.launch
+3. Rodar o localizacao_aruco.launch
+4. Rodar o ekf.launch
+```bash
+roslaunch ekf ekf.launch
+```
+
