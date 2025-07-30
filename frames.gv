@@ -1,0 +1,19 @@
+digraph G {
+"base_link" -> "front_sonar"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"odom" -> "base_link"[label=" Broadcaster: /gazebo\nAverage rate: 50.221\nBuffer length: 4.978\nMost recent transform: 219.226\nOldest transform: 214.248\n"];
+"p3dx_left_wheel" -> "p3dx_left_hubcap"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "p3dx_left_wheel"[label=" Broadcaster: /gazebo\nAverage rate: 50.221\nBuffer length: 4.978\nMost recent transform: 219.226\nOldest transform: 214.248\n"];
+"p3dx_right_wheel" -> "p3dx_right_hubcap"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "p3dx_right_wheel"[label=" Broadcaster: /gazebo\nAverage rate: 50.221\nBuffer length: 4.978\nMost recent transform: 219.226\nOldest transform: 214.248\n"];
+"base_link" -> "swivel"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "top_plate"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "camera_link"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"center_wheel" -> "center_hubcap"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"swivel" -> "center_wheel"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "lms100"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"map" -> "odom"[label=" Broadcaster: /amcl\nAverage rate: 58.906\nBuffer length: 4.991\nMost recent transform: 219.329\nOldest transform: 214.338\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 219.251"[ shape=plaintext ] ;
+}->"map";
+}

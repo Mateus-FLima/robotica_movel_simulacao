@@ -1,0 +1,7 @@
+# campos_potenciais/config/parametros.yaml
+k_att: 0.9
+k_rep: 0.5
+d0: 1.0
+max_vel_x: 0.3
+max_rot_z: 1.0
+goal_tolerance: 0.15    # tolerância de chegada ao goal
