@@ -14,8 +14,8 @@
   <!-- load the controllers -->
   <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/$(arg namespace_arg)" args="joint1_position_controller joint2_position_controller joint_state_controller"/>-->
 
-  <!-- transform the robot's coordinates to map-->
-  <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 /map /odom 100" />
+  <!-- transform the robot's coordinates to map
+  <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 /map /odom 100" />-->
 
   <!-- convert joint states to TF transforms for rviz, etc -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">

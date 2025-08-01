@@ -6,6 +6,7 @@ from geometry_msgs.msg import Point, Twist, PoseWithCovarianceStamped, PoseStamp
 from tf.transformations import euler_from_quaternion
 from visualization_msgs.msg import Marker
 
+
 class PotentialFieldsNode:
     def __init__(self):
         rospy.init_node('potential_fields_node')
@@ -20,7 +21,7 @@ class PotentialFieldsNode:
         self.goal = None
         self.pose = np.zeros(2)
         self.yaw = 0.0
-        
+
         self.goal_tolerance = rospy.get_param('~goal_tolerance', 0.15)
 
         rospy.Subscriber('/p3dx/laser/scan', LaserScan, self.scan_cb)
@@ -36,7 +37,7 @@ class PotentialFieldsNode:
         self.pose = np.array([msg.pose.pose.position.x, msg.pose.pose.position.y])
         q = msg.pose.pose.orientation
         _, _, self.yaw = euler_from_quaternion([q.x, q.y, q.z, q.w])
-    
+
     def publicar_seta(self, origem, vetor, id, cor, nome):
         m = Marker()
         m.header.frame_id = "map"
@@ -45,18 +46,18 @@ class PotentialFieldsNode:
         m.id = id
         m.type = Marker.ARROW
         m.action = Marker.ADD
-        m.scale.x = 0.05   # espessura
+        m.scale.x = 0.05  # espessura
         m.scale.y = 0.1
         m.scale.z = 0.1
         m.color.r, m.color.g, m.color.b, m.color.a = cor  # RGBA
         m.points = []
 
-    # origem
+        # origem
         p0 = Point()
         p0.x, p0.y = origem[0], origem[1]
         m.points.append(p0)
 
-    # ponta da seta (origem + vetor)
+        # ponta da seta (origem + vetor)
         p1 = Point()
         p1.x = origem[0] + vetor[0]
         p1.y = origem[1] + vetor[1]
@@ -64,11 +65,10 @@ class PotentialFieldsNode:
 
         self.marker_pub.publish(m)
 
-
     def scan_cb(self, msg):
         if self.goal is None:
             return
-            
+
             # Parar se já está dentro da tolerância
         if np.linalg.norm(self.goal - self.pose) < self.goal_tolerance:
             twist = Twist()
@@ -92,7 +92,7 @@ class PotentialFieldsNode:
             dist = np.linalg.norm(p)
             if 0.01 < dist < self.d0:
                 direction = -p / dist
-                F_rep += self.k_rep * (1.0/dist - 1.0/self.d0) * (1.0/(dist**2)) * direction
+                F_rep += self.k_rep * (1.0 / dist - 1.0 / self.d0) * (1.0 / (dist ** 2)) * direction
 
         F = F_att + F_rep
         angle_to_goal = np.arctan2(F[1], F[0])
@@ -104,11 +104,11 @@ class PotentialFieldsNode:
         twist.linear.x = v
         twist.angular.z = w
         self.cmd_pub.publish(twist)
-        self.publicar_seta(self.pose, F_att, 1, (0.0, 1.0, 0.0, 1.0), "atracao")   # verde
+        self.publicar_seta(self.pose, F_att, 1, (0.0, 1.0, 0.0, 1.0), "atracao")  # verde
         self.publicar_seta(self.pose, F_rep, 2, (1.0, 0.0, 0.0, 1.0), "repulsao")  # vermelho
-        self.publicar_seta(self.pose, F,     3, (0.0, 0.0, 1.0, 1.0), "total")     # azul
+        self.publicar_seta(self.pose, F, 3, (0.0, 0.0, 1.0, 1.0), "total")  # azul
+
 
 if __name__ == '__main__':
     PotentialFieldsNode()
     rospy.spin()
-
