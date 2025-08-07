@@ -29,7 +29,7 @@ ARUCO_DICTIONARY = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_250)
 
 class ArucoLocator:
     def __init__(self):
-        rospy.set_param('/use_sim_time', True)
+        # rospy.set_param('/use_sim_time', True)
         rospy.init_node('aruco_locator')
 
         self.bridge = CvBridge()

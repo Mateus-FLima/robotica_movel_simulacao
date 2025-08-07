@@ -1,0 +1,37 @@
+<launch>
+
+    <!-- DRIVER do robô real -->
+    <node name="rosaria" pkg="RosAria" type="RosAria" output="screen" />
+
+    <!-- URDF do robô -->
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder $(find p3dx_description)/urdf/pioneer3dx.xacro" />
+
+    <!-- LOCALIZAÇÃO COM ARUCO -->
+    <include file="$(find localizacao_aruco)/launch/localizacao_aruco.launch">
+    	<arg name="use_sim_time" value="false"/>
+    </include>
+
+    <!-- LOCALIZAÇÃO COM AMCL + LIDAR -->
+    <include file="$(find lidar_p3dx)/launch/localization.launch">
+        <arg name="use_sim_time" value="false"/>
+    </include>
+
+    <!-- FUSÃO COM EKF -->
+    <include file="$(find ekf)/launch/ekf.launch" />
+
+    <!-- LOGGER DE POSE -->
+    <node pkg="log_posicao"
+          type="log_posicao.py"
+          name="log_posicao"
+          launch-prefix="gnome-terminal --"
+          output="screen" />
+
+    <!-- INTERFACE DE CONTROLE -->
+    <node pkg="rqt_robot_steering"
+          type="rqt_robot_steering"
+          name="rqt_steering"
+          output="screen" />
+
+</launch>
+
