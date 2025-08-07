@@ -15,9 +15,8 @@ roslaunch lidar_p3dx slam.launch
 rosrun map_server map_saver -f ~/catkin_ws/src/robotica_movel/professor_teste/lidar_p3dx/maps/corredor_map
 ```
 
-### Para rodar o corredor com o robô, as tags posicionadas e os pacotes amcl, aruco e ekf juntos:
+### Para rodar o corredor com o robô, as tags posicionadas e os pacotes amcl, aruco, log_posicao e ekf juntos:
 ```bash
 roslaunch professor_mundo corredor_pacotes.launch
 ```
-
 

@@ -43,6 +43,14 @@
     <include file="$(find localizacao_aruco)/launch/localizacao_aruco.launch"/>
     <include file="$(find lidar_p3dx)/launch/localization.launch"/>
     <include file="$(find ekf)/launch/ekf.launch"/>
+
     <include file="$(find campos_potenciais)/launch/campos_potenciais.launch"/>
+
+    <node pkg="log_posicao"
+      type="log_posicao.py"
+      name="log_posicao"
+      launch-prefix="gnome-terminal --"
+      output="screen" />
+
 
 </launch>
