@@ -140,14 +140,14 @@ class ArucoLocator:
         pose.pose.pose.orientation = trans.transform.rotation
         pose.pose.covariance = [0.01] * 36  # Pequena incerteza
 
-        rospy.loginfo("Pose do robô no frame 'map':")
-        rospy.loginfo(
-            f" Posição: x={pose.pose.pose.position.x:.2f}, y={pose.pose.pose.position.y:.2f}, z={pose.pose.pose.position.z:.2f}"
-        )
-        rospy.loginfo(
-            f" Orientação: x={pose.pose.pose.orientation.x:.2f}, y={pose.pose.pose.orientation.y:.2f}, "
-            f"z={pose.pose.pose.orientation.z:.2f}, w={pose.pose.pose.orientation.w:.2f}"
-        )
+        # rospy.loginfo("Pose do robô no frame 'map':")
+        # rospy.loginfo(
+        #     f" Posição: x={pose.pose.pose.position.x:.2f}, y={pose.pose.pose.position.y:.2f}, z={pose.pose.pose.position.z:.2f}"
+        # )
+        # rospy.loginfo(
+        #     f" Orientação: x={pose.pose.pose.orientation.x:.2f}, y={pose.pose.pose.orientation.y:.2f}, "
+        #     f"z={pose.pose.pose.orientation.z:.2f}, w={pose.pose.pose.orientation.w:.2f}"
+        # )
         self.pose_publisher.publish(pose)
 
 
